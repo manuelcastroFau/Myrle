@@ -5,7 +5,9 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3000;
-//app.use(bodyParser.urleconded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(express.static('Assets'));
 
 app.get('/', (req,res) => {
   res.sendFile(__dirname+'/index.html');
@@ -14,6 +16,13 @@ app.get('/', (req,res) => {
 app.get("/register", (req, res) =>{
   res.sendFile(__dirname+'/register.html');
   //res.send("sss");
+
+
+});
+
+app.get("/menu",(req,res) =>{
+
+  res.sendFile(__dirname+"/menu-section.html");
 });
 
 app.listen(3000, function() {
