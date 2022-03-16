@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 3000;
+//const port = 3000;
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('Assets'));
@@ -55,8 +55,11 @@ app.get("/community",(req,res) =>{
   res.sendFile(__dirname+"/community.html");
 });
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port =3000;
+}   
 
-
-app.listen(3000, function() {
+app.listen(port, function() {
   console.log("Server started in port 3000");
 });
