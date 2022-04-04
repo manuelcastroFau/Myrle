@@ -34,6 +34,7 @@
       </div>
     </div>
   </navbar>
+
     <title>Billing</title>
   </head>
   <body>
@@ -44,7 +45,6 @@
         <table class="table">
           <thead>
             <tr>
-              
               <th>
                 Description
               </th>
@@ -65,7 +65,7 @@
               <td>
                 04/14/2022
               </td>
-              <td>
+              <td id="c1">
                 Not paid
               </td>
             </tr>
@@ -76,7 +76,7 @@
               <td>
                 04/14/2022
               </td>
-              <td>
+              <td id="c2">
                 Not paid
               </td>
             </tr>
@@ -190,7 +190,7 @@
                         <div class="p-3 d-flex justify-content-between">
                             <div class="d-flex flex-column"> <span><strong>Subtotal</strong></span> </div> <span id="sub_total">$0</span>
                         </div>
-                        <div class="p-3 text-center"> <button class="btn btn-primary w-100 free-button">Submit</button>
+                        <div class="p-3 text-center"> <button class="btn btn-primary w-100 free-button" onclick="changeText()">Pay Now</button>
                         </div>
                     </div>
                 </div>
@@ -219,63 +219,7 @@
  
  
   </div>  
-  <script>
-var form = document.getElementById("cards"),
-    checkboxes = form.getElementsByTagName("input"),
-    subtotal = document.getElementById("sub_total");
-for(var i = 0; i <= checkboxes.length; i++){
-    checkboxes[i].onchange = function(){
-      var newsub_total = 0.0;
-    for(var i = 0; i < checkboxes.length; i++){
-        if(checkboxes[i].checked){
-            newsub_total += parseInt(checkboxes[i].value);
-        }
-    }
-    subtotal.innerHTML = "$" + newsub_total.toFixed(2);
-    }
-  }
-    </script>
- <script>
-  function initPayPalButton() {
-    paypal.Buttons({
-      style: {
-        shape: 'pill',
-        color: 'gold',
-        layout: 'horizontal',
-        label: 'paypal',
-        tagline: false
-        
-      },
-
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{"amount":{"currency_code":"USD","value":1400}}]
-        });
-      },
-
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(orderData) {
-          
-          // Full available details
-          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-
-          // Show a success message within this page, e.g.
-          const element = document.getElementById('paypal-button-container');
-          element.innerHTML = '';
-          element.innerHTML = '<h3>Thank you for your payment!</h3>';
-
-          // Or go to another URL:  actions.redirect('thank_you.html');
-          
-        });
-      },
-
-      onError: function(err) {
-        console.log(err);
-      }
-    }).render('#paypal-button-container');
-  }
-  initPayPalButton();
-</script>
+ 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -287,7 +231,9 @@ for(var i = 0; i <= checkboxes.length; i++){
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
-    <script src="https://kit.fontawesome.com/cbcf69c3b6.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/cbcf69c3b6.js" crossorigin="anonymous">
+
+    </script><script src="Assets/js/billing.js"></script>
   </body>
 </html>
 
