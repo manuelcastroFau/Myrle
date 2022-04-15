@@ -30,6 +30,7 @@
           <li class="nav-item"><a href="/social-life" class="nav-link ">Social Life</a></li>
           <li class="nav-item"><a href="/information" class="nav-link ">Information </a></li>
           <li class="nav-item"><a href="/billing" class="nav-link active"> Billing</a></li>
+          <li class="nav-item"><a href="/about-us" class="nav-link "> About us</a></li>
           <li class="nav-item"><a href="#" class="nav-link "></a></li>
         </ul>
       </div>
@@ -64,7 +65,7 @@
                 Community initial deposit
               </td>
               <td>
-                04/14/2022
+                05/18/2022
               </td>
               <td id="c1">
                 Not paid
@@ -75,7 +76,7 @@
                 Quarterly maintenance fee 
               </td>
               <td>
-                04/14/2022
+                05/14/2022
               </td>
               <td id="c2">
                 Not paid
@@ -87,10 +88,10 @@
                 Association fee
               </td>
               <td>
-                04/01/2022
+                05/01/2022
               </td>
-              <td>
-                Paid
+              <td id="c3">
+                Not Paid
               </td>
             </tr>
             <tr class="table-light">
@@ -99,18 +100,18 @@
                 Event fee
               </td>
               <td>
-                04/01/2022
+                05/01/2022
               </td>
-              <td>
-                Paid
+              <td id="c4">
+                Not paid
               </td>
             </tr>
             
           </tbody>
         </table>
         <div class="alert alert-info mt-5">Choose your method of payment and then submit. Please wait 2-3 business days to see changes in your account</div>
-          <div class="d-flex mt-5">
-                <div class="col-md-6"> <span class="text-primary display-6 p-0">Payment Method</span>
+          <div class="row d-flex mt-5">
+                <div class="col-12 col-md-6"> <span class="text-primary display-6 p-0">Payment Method</span>
                     <div class="card">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
@@ -145,15 +146,15 @@
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                     <div class="card-body payment-card-body">
                                       <div class="col-md-4 pb-2"> 
-                                      <div class="input"><i class="fa fa-id-card"></i><span class="font-weight-normal card-text "> Name on card</span><input type="text" class="form-control" placeholder="Full Name"> </div>
+                                      <div class="input"><i class="fa fa-id-card"></i><span class="font-weight-normal card-text "> Name on card</span><input type="text" id="nameCard"class="form-control" placeholder="Full Name"> </div>
                                   </div>
-                                        <div class="input"> <i class="fa fa-credit-card"></i> <span class="font-weight-normal card-text">Card Number</span><input type="text" class="form-control" placeholder="0000 0000 0000 0000"> </div>
+                                        <div class="input"> <i class="fa fa-credit-card"></i> <span class="font-weight-normal card-text">Card Number</span><input type="text" id="cardNumber" class="form-control" placeholder="0000 0000 0000 0000"> </div>
                                         <div class="row mt-3 mb-3">
                                             <div class="col-md-4"> 
-                                                <div class="input"> <i class="fa fa-calendar"></i> <span class="font-weight-normal card-text">Expiration Date</span><input type="text" class="form-control" placeholder="MM/YY"> </div>
+                                                <div class="input"> <i class="fa fa-calendar"></i> <span class="font-weight-normal card-text">Expiration Date</span><input type="text"  id="cardDate"class="form-control" placeholder="MM/YY"> </div>
                                             </div>
                                             <div class="col-md-4"> 
-                                                <div class="input"> <i class="fa fa-lock"></i> <span class="font-weight-normal card-text">CVC/CVV</span><input type="text" class="form-control" placeholder="000"> </div>
+                                                <div class="input"> <i class="fa fa-lock"></i> <span class="font-weight-normal card-text">CVC/CVV</span><input type="text" class="form-control" id="cvc" placeholder="000"> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 "> <span class="display-6 text-primary p-0">Summary</span>
+                <div class="col-12 col-md-6 "> <span class="display-6 text-primary p-0">Summary</span>
                     <div class="card">  
                         <div class="p-3" id="cards">
                           <div class="form-check">
@@ -193,6 +194,7 @@
                         </div>
                         <div class="p-3 text-center"> <button class="btn btn-primary w-100 free-button" onclick="changeText()">Pay Now</button>
                         </div>
+                        <div class="alert alert-success mx-4 mt-1 text-center" id="paymentAlert" style="display:none;">Your payment has been processed successfully. Thanks!</div>
                     </div>
                 </div>
         </div>
@@ -234,7 +236,7 @@
     -->
     <script src="https://kit.fontawesome.com/cbcf69c3b6.js" crossorigin="anonymous">
 
-    </script><script src="Assets/js/billing.js"></script>
+    </script><script src="js/billing.js"></script>
   </body>
 </html>
 

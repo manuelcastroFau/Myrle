@@ -1,7 +1,40 @@
 
    function changeText () {
-    document.getElementById("c1").innerHTML= "Paid";
-    document.getElementById("c2").innerHTML= "Paid";
+    //document.getElementById("c1").innerHTML= "Paid";
+    //document.getElementById("c2").innerHTML= "Paid";
+    //document.getElementById("c3").innerHTML= "Paid";
+    //document.getElementById("c4").innerHTML= "Paid";
+
+    // let checkBox1 =document.getElementById("checkBox1");
+    // let checkBox2 =document.getElementById("checkBox2");
+    //let checkboxes =[];
+    // checkbox.push( document.getElementById("checkBox1"));
+    // checkbox.push((document.getElementById("checkBox2")),(document.getElementById("c2").innerHTML= "Paid"));
+    // checkbox.push( document.getElementById("checkBox3"));
+    // checkbox.push(document.getElementById("checkBox4"));
+
+  for (let index = 1; index <5; index++) {
+    if (document.getElementById("checkBox"+index.toString()).checked==true)
+    {
+      document.getElementById("c"+index.toString()).innerHTML="Paid";
+      document.getElementById("checkBox"+index.toString()).disabled=true;
+
+    }
+    document.getElementById("sub_total").innerHTML="$ 0"
+
+    document.getElementById("nameCard").value="";
+    document.getElementById("cardNumber").value="";
+    document.getElementById("cardDate").value="";
+    document.getElementById("cvc").value="";
+
+  }
+
+    document.getElementById("paymentAlert").style.display="block";
+    setTimeout(() => {document.getElementById("paymentAlert").style.display="none";}, 2000);
+
+
+    
+
   }
   function initPayPalButton() {
     paypal.Buttons({

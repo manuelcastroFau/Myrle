@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-  <title>Hello, world!</title>
+  <title>Social life</title>
 </head>
 
 <body>
@@ -38,6 +38,7 @@
             <li class="nav-item"><a href="/social-life" class="nav-link active">Social Life</a></li>
             <li class="nav-item"><a href="/information" class="nav-link ">Information </a></li>
             <li class="nav-item"><a href="/billing" class="nav-link"> Billing</a></li>
+            <li class="nav-item"><a href="/about-us" class="nav-link "> About us</a></li>
             <li class="nav-item"><a href="#" class="nav-link "></a></li>
           </ul>
         </div>
@@ -81,7 +82,7 @@
               
               <h5 class="card-title fs-2 pt-2">Painting Club</h5>
               <p class="card-text fs-4">The painting club is an open studio time for residents to develop personal projects or collaborate with other residents.</p>
-              <a href="#" class="btn btn-lg btn-success mt-3">Enroll</a>
+              <button id="Painting Club" onclick="addClub('Painting Club')" class="btn btn-lg btn-success mt-3">Enroll</button>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -98,7 +99,7 @@
               
               <h5 class="card-title fs-2 pt-2">Jogging club</h5>
               <p class="card-text fs-4">This club was made to promote and develop interest in physical activity!</p>
-              <a href="#" class="btn btn-lg btn-success mt-3">Enroll</a>
+              <button id="Jogging Club" onclick="addClub('Jogging Club')" class="btn btn-lg btn-success mt-3">Enroll</button>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -116,7 +117,7 @@
               
               <h5 class="card-title fs-2 pt-2">Dancing club</h5>
               <p class="card-text fs-4">Dancing Club is for those who desire to learn dance or simply wish to participate in dancing and socializing.</p>
-              <a href="#" class="btn btn-lg btn-success mt-3">Enroll</a>
+              <button id="Dancing Club" onclick="addClub('Dancing Club')" class="btn btn-lg btn-success mt-3">Enroll</button>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -134,7 +135,7 @@
               
               <h5 class="card-title fs-2 pt-2">Technology club for Seniors</h5>
               <p class="card-text fs-4">The goal of this club is to increase members understanding of modern technology through discussions, trends, and hands on experience. </p>
-              <a href="#" class="btn btn-lg btn-success mt-3">Enroll</a>
+              <button id="Technology Club for Seniors" onclick="addClub('Technology Club for Seniors')" class="btn btn-lg btn-success mt-3">Enroll</button>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -152,7 +153,7 @@
               
               <h5 class="card-title fs-2 pt-2">Camping Club</h5>
               <p class="card-text fs-4">If you enjoy the great outdoors, this club helps residents connect with nature.</p>
-              <a href="#" class="btn btn-lg btn-success mt-3">Enroll</a>
+              <button id="Camping Club" onclick="addClub('Camping Club')" class="btn btn-lg btn-success mt-3">Enroll</button>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -170,7 +171,7 @@
               
               <h5 class="card-title fs-2 pt-2">Photography Club</h5>
               <p class="card-text fs-4">All levels of experience are welcome and encouraged to explore this exciting side of the visual arts.  </p>
-              <a href="#" class="btn btn-lg btn-success mt-3">Enroll</a>
+              <button id="Photography Club" onclick="addClub('Photography Club')" class="btn btn-lg btn-success mt-3">Enroll</button>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -216,6 +217,45 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
   <script src="https://kit.fontawesome.com/cbcf69c3b6.js" crossorigin="anonymous"></script>
+
+  <script>
+    async function check(){
+        var clubs = ['Painting Club','Jogging Club', 'Dancing Club','Technology Club for Seniors','Camping Club','Photography Club']
+        clubs.forEach(async function(value,index, array){
+          const response = await fetch('/user/club/check?club='+value);
+          const myJson = await response.json();
+          if(myJson.status === 401)
+            window.location.href = "../";
+          if(myJson.status === 200){
+            document.getElementById(value).innerHTML= "Enrolled";
+            document.getElementById(value).disabled = true;
+          }
+        })
+        
+      }
+    check();
+
+
+    async function addClub(club){
+      const response = await fetch('/user/club/add',{
+        method: 'POST',
+        headers:{          
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({club:club})
+      });
+      const myJson = await response.json();
+      if(myJson.status === 401)
+        window.location.href = "../";
+      location.reload();
+    }
+
+    async function logout(){
+        const response = await fetch('/user/logout');
+        window.location.href = "../";
+      }
+  </script>
 </body>
 
 </html>
