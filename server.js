@@ -64,28 +64,6 @@ app.get("/about-us", (req, res) =>{
 
 });
 
-app.get("/manuel",(req,res) =>{
-
-  res.sendFile(__dirname+"/Assets/resume/ResumeManuelCastro.pdf");
-});
-app.get("/faith",(req,res) =>{
-
-  res.sendFile(__dirname+"/Assets/resume/Resume-FaithScott.pdf");
-});
-app.get("/eliecer",(req,res) =>{
-
-  res.sendFile(__dirname+"/Assets/resume/Resume-EliecerHernandez.pdf");
-});
-app.get("/kevin",(req,res) =>{
-
-  res.sendFile(__dirname+"/Assets/resume/Resume-EliecerHernandez.pdf");
-});
-app.get("/daniel",(req,res) =>{
-
-  res.sendFile(__dirname+"/Assets/resume/Daniel_Medeiros_Resume.pdf");
-});
-
-
 app.get("/menu",(req,res) =>{
 
   res.sendFile(__dirname+"/menu-section.html");
@@ -126,6 +104,28 @@ app.get("/admin",(req,res) =>{
 
 app.get("/admin-register",(req,res) =>{
   res.sendFile(__dirname+"/adminRegister.html");
+});
+
+//teams member resume
+app.get("/manuel",(req,res) =>{
+
+  res.sendFile(__dirname+"/Assets/resume/ResumeManuelCastro.pdf");
+});
+app.get("/faith",(req,res) =>{
+
+  res.sendFile(__dirname+"/Assets/resume/Resume-FaithScott.pdf");
+});
+app.get("/eliecer",(req,res) =>{
+
+  res.sendFile(__dirname+"/Assets/resume/Resume-EliecerHernandez.pdf");
+});
+app.get("/kevin",(req,res) =>{
+
+  res.sendFile(__dirname+"/Assets/resume/KevinResume.pdf");
+});
+app.get("/daniel",(req,res) =>{
+
+  res.sendFile(__dirname+"/Assets/resume/Daniel_Medeiros_Resume.pdf");
 });
 
 
@@ -169,5 +169,5 @@ if (port == null || port == "") {
 }   
 
 app.listen(port, function() {
-  console.log("Server started in port 3000");
+  console.log("Server started in port "+port);
 });
