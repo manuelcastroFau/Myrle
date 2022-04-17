@@ -78,7 +78,7 @@ for(var i = 0; i <= checkboxes.length; i++){
     checkboxes[i].onchange = function(){
       var newsub_total = 0.0;
     for(var i = 0; i < checkboxes.length; i++){
-        if(checkboxes[i].checked){
+        if(checkboxes[i].checked && checkboxes[i].disabled!=true){
             newsub_total += parseInt(checkboxes[i].value);
         }
     }
