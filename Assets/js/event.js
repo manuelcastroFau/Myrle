@@ -74,8 +74,26 @@
       start: '2022-04-12T14:30:00'
     },
     {
+      title: 'Lunch Free',
+      start: '2022-04-20T12:00:00'
+    },
+    {
       title: 'Chess Tournament',
+      start: '2022-04-21T10:00:00'
+    },
+    {
+      title: 'Pool Part for seniors',
+      url: 'https://www.westchestergov.com/previous-releases/4543-seniors-start-summer-with-pool-party-and-barbecue',
+      start: '2022-04-21'
+    },
+    {
+      title: 'backgammon Tournament',
       start: '2022-04-13T07:00:00'
+    },
+    {
+      title: 'Comunity Meeting',
+      start: '2022-04-25T10:30:00',
+      end: '2022-04-25T12:30:00'
     },
     {
       title: 'New technologies for Seniors',
@@ -86,10 +104,15 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-      initialDate: '2022-04-13',
+      initialDate: today,
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
